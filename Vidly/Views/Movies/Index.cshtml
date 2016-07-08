@@ -1,32 +1,23 @@
-﻿@model List<Vidly.Models.Movie>
+﻿@model IEnumerable<Vidly.Models.Movie>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Movies";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Movies</h2>
-
-@{
-    if (Model.Count < 1)
-    {
-        <text>There are no movies avaialble.</text>
-    }
-    else
-    {
-        <table class="table table-bordered table-hover">
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Movie</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
             <tr>
-                <th>Movie</th>
+                <td>@Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id }, null)</td>   
             </tr>
-
-            @foreach (var movie in Model)
-            {
-                <tr>
-                    <td>@Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id }, null)	</td>
-                </tr>
-            }
-
-        </table>
-    }
-
-}
+        }
+    </tbody>
+</table>
