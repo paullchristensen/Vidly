@@ -23,19 +23,21 @@ namespace Vidly.Controllers
 
         public ViewResult Index()
         {
-            var movies = _context.Movies.Include(m => m.Genre).ToList();
+            //var movies = _context.Movies.Include(m => m.Genre).ToList();
 
-            return View(movies);
+            //return View(movies);
+            return View();
         }
 
         public ActionResult Details(int id)
         {
-            var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+            //var movie = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
 
-            if (movie == null)
-                return HttpNotFound();
+            //if (movie == null)
+            //    return HttpNotFound();
 
-            return View(movie);
+            //return View(movie);
+            return View();
 
         }
 
